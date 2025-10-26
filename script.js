@@ -179,6 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
   ratingBtn.addEventListener("click", () => switchContent("rating"));
 });
 
+
+
 // Initialize on load
 updateHandle();
 
