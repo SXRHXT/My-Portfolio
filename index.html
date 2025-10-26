@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Serhat</title>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<script>
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 3 + 1,
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5,
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0, 255, 153, 0.6)';
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = '#00ff99';
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+<div id="custom-cursor"></div>
+
+<!-- Intro Section -->
+<section class="intro-section fade-in show">
+  <div class="intro-container">
+    <!-- Animated border wrapper -->
+    <div class="animated-border">
+      <img src="/images/Serhat Sunset.jpg" alt="Serhat" class="intro-photo">
+    </div>
+
+    <div class="intro-text">
+      <h1 class="animated-name">Serhat</h1>
+      <strong><p>Tester & QA Specialist</p></strong>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="https://discord.com/users/390316713763405835" target="_blank" class="icon discord">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://www.roblox.com/users/1223540614/profile" target="_blank" class="icon roblox">
+          <img src="images/Roblox_Logo.png" alt="Roblox Icon">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Me Buttons -->
+<div class="about-buttons">
+  <button id="about-btn" class="active">About Me</button>
+  <button id="skills-btn">My Skills</button>
+  <button id="rating-btn">My Rating</button>
+</div>
+
+<!-- About Me Section -->
+<div class="about-me-card" id="about-card">
+</div>
+
+<button class="nav-btn left-btn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ff99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+</button>
+
+<button class="nav-btn right-btn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ff99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</button>
+
+<!-- Timeline Section -->
+<section class="timeline-section">
+    <h2>My Roblox Testing Experience</h2>
+    <div class="timeline-wrapper">
+        
+        <div class="timeline-horizontal">
+            <!-- Timeline Items -->
+            <div class="timeline-event">
+                <span class="timeline-year">2019</span>
+                <a href="https://www.roblox.com/games/1234567890" target="_blank" class="timeline-card-link">
+                    <div class="timeline-card">
+                        <img src="images/AFS.jpg" alt="AFS">
+                        <h3>Anime Fighting Simulator</h3>
+                        <p>Started my Career as Junior Tester for Anime Fighting Simulator.</p>
+                        <span class="info">Visits: 5B+</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="timeline-event">
+                <span class="timeline-year">2020–2023</span>
+                <div class="timeline-card">
+                    <h3>QA & Testing Journey</h3>
+                    <p>Tested several small Roblox projects that were still in development. Some were successfully sold, while others were discontinued.</p>
+                    <p>From these projects, I gained experience in managing QA processes, balancing game mechanics, and testing features to ensure a fun and stable gameplay experience.</p>
+                    <ul>
+                        <li>QA Manager</li>
+                        <li>Game Balancer</li>
+                        <li>Tester</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <span class="timeline-year">2024</span>
+                <a href="https://www.roblox.com/games/17316900493/1-5x-Training-Boost-Anime-Simulator" target="_blank" class="timeline-card-link">
+                <div class="timeline-card">
+                    <img src="images/ASIM.png" alt="ASIM">
+                    <h3>Anime Simulator</h3>
+                    <p>Fighting and training game inspired by multiple popular Animes.</p>
+                    <span class="info">Visits: 25M+</span>
+                </div>
+                </a>
+            </div>
+
+            <div class="timeline-event">
+                <span class="timeline-year">2024</span>
+                <a href="https://www.roblox.com/games/16906029391/SOON-Anime-Venture" target="_blank" class="timeline-card-link">
+                <div class="timeline-card">
+                    <img src="images/Anime_Venture.png" alt="AV">
+                    <h3>Anime Venture</h3>
+                    <p>Training game inspired by multiple popular Anime shows.</p>
+                    <span class="info">Visits: 575K+</span>
+                </div>
+                </a>
+            </div>
+
+            <div class="timeline-event">
+                <span class="timeline-year">2025</span>
+                <a href="https://www.roblox.com/games/18193456565/Fruit-Defenders" target="_blank" class="timeline-card-link">
+                <div class="timeline-card">
+                    <img src="images/FD.png" alt="FD">
+                    <h3>Fruit Defenders</h3>
+                    <p>An One Piece Tower Defense.</p>
+                    <span class="info">Visits: 485K+</span>
+                </div>
+                </a>
+            </div>
+
+            <div class="timeline-event">
+                <span class="timeline-year">2025</span>
+                <a href="https://www.roblox.com/games/72542105394440/Anime-Fighting-Simulator-Reborn-UPDATE" target="_blank" class="timeline-card-link">
+                <div class="timeline-card">
+                    <img src="images/AFSR.png" alt="ASFR">
+                    <h3>Anime Fighting Simulator: Reborn</h3>
+                    <p>Get ready to dive into a world full of action, epic battles, thrilling adventures, and powerful upgrades.</p>
+                    <span class="info">Visits: 650K+</span>
+                </div>
+                </a>
+            </div>
+
+            <div class="timeline-event">
+                <span class="timeline-year">2025</span>
+                <a href="https://www.roblox.com/communities/635207336/Tr-dency#!/about" target="_blank" class="timeline-card-link">
+                <div class="timeline-card">
+                    <img src="images/AAS.jpg" alt="AAS">
+                    <h3>[IN DEV] Anime Ascension</h3>
+                    <p>Train to gain power, unlock intense PVP, complete epic quests, battle powerful bosses and explore new worlds!</p>
+                    <span class="info">Visits: Unknown</span>
+                </div>
+                </a>
+            </div>
+
+            <div class="timeline-event">
+                <span class="timeline-year">2025</span>
+                <a href="https://www.roblox.com/communities/614340707/Night-Y-Studio#!/about" target="_blank" class="timeline-card-link">
+                <div class="timeline-card">
+                    <img src="images/RB.png" alt="RB">
+                    <h3>[IN DEV] Reaper Battlegrounds</h3>
+                    <p>Reaper Battlegrounds is a fast-paced Roblox fighting game set in the world of Bleach.</p>
+                    <span class="info">Visits: Unknown</span>
+                </div>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
