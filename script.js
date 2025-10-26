@@ -179,7 +179,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ratingBtn.addEventListener("click", () => switchContent("rating"));
 });
 
-
+let count = parseInt(localStorage.getItem('visitorCount')) || 0;
+count++;
+localStorage.setItem('visitorCount', count);
+document.getElementById('visitor-count').innerText = count;
 
 // Initialize on load
 updateHandle();
