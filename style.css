@@ -39,6 +39,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: -1;
 }
 
 .animated-border img {
@@ -83,15 +84,6 @@ body {
     gap: 30px;
     max-width: 900px;
     width: 100%;
-}
-
-.intro-photo {
-  border: none;
-  display: block;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
 }
 
 .intro-text h1 {
