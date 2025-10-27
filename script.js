@@ -45,7 +45,6 @@ document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
 });
 
-// Create scrollbar elements
 const scrollbar = document.createElement('div');
 scrollbar.id = 'custom-scrollbar';
 const handle = document.createElement('div');
@@ -63,7 +62,6 @@ const updateHandle = () => {
     handle.style.top = (scrollTop / docHeight) * maxTop + 'px';
 };
 
-// Show scrollbar on scroll
 window.addEventListener('scroll', () => {
     scrollbar.style.opacity = '1';
     updateHandle();
@@ -84,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
   aboutContent.classList.add("about-content");
   aboutCard.appendChild(aboutContent);
 
-  // Default content (About)
   aboutContent.innerHTML = `
     <h2>About Me</h2>
     <p>Hello! I am Serhat, a passionate Tester & QA Specialist. I focus on Roblox games, helping developers identify bugs, improve gameplay, and enhance user experience.</p>
@@ -93,12 +90,10 @@ document.addEventListener("DOMContentLoaded", () => {
   aboutBtn.classList.add("active");
 
   function switchContent(type) {
-    // Disable all buttons
     aboutBtn.classList.remove("active");
     skillsBtn.classList.remove("active");
     ratingBtn.classList.remove("active");
 
-    // Fade out current content
     aboutContent.style.opacity = "0";
     aboutContent.style.transform = "translateY(10px)";
 
@@ -168,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ratingBtn.classList.add("active");
       }
 
-      // Fade in new content
       aboutContent.style.opacity = "1";
       aboutContent.style.transform = "translateY(0)";
     }, 400);
@@ -179,13 +173,46 @@ document.addEventListener("DOMContentLoaded", () => {
   ratingBtn.addEventListener("click", () => switchContent("rating"));
 });
 
-let count = parseInt(localStorage.getItem('visitorCount')) || 0;
-count++;
-localStorage.setItem('visitorCount', count);
-document.getElementById('visitor-count').innerText = count;
+document.addEventListener("DOMContentLoaded", () => {
+  const visitorEl = document.getElementById("visitor-count");
+  const apiUrl = "https://api.myjson.online/v1/records/9ba5888c-face-49c3-bed0-e7423da42b5b";
 
-// Initialize on load
+  async function updateCounter() {
+    try {
+      const res = await fetch(apiUrl);
+      const json = await res.json();
+      const data = json.data;
+
+      const today = new Date().toISOString().split("T")[0];
+      const lastUpdate = data.lastUpdate || today;
+
+      const diffDays =
+        Math.floor(
+          (new Date(today) - new Date(lastUpdate)) / (1000 * 60 * 60 * 24)
+        );
+
+      if (diffDays > 0) {
+        for (let i = 0; i < diffDays; i++) {
+          data.count += Math.floor(Math.random() * 3) + 1;
+        }
+        data.lastUpdate = today;
+
+        await fetch(apiUrl, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+      }
+
+      visitorEl.textContent = data.count;
+    } catch (err) {
+      console.error("Error updating visitor count:", err);
+    }
+  }
+
+  updateCounter();
+});
+
+
 updateHandle();
-
-// Initialize
 updateTimeline();
