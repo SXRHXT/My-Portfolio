@@ -363,7 +363,7 @@ body {
     gap: 42px;
     position: relative;
     transition: transform 0.8s ease; 
-    padding-left: 1920px; 
+    padding-left: 2290px; /* Making Place for more cards */
 }
 
 /* Event cards */
