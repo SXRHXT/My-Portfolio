@@ -113,6 +113,19 @@ animate();
 <!-- Timeline Section -->
 <section class="timeline-section">
     <h2>My Roblox Testing Experience</h2>
+
+    <div class="timeline-legend">
+        <div class="legend-item">
+            <span class="legend-circle orange"></span>
+            <span class="legend-text orange">Very Active</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-circle red"></span>
+            <span class="legend-text red">Not Active</span>
+        </div>
+    </div>
+
+
     <div class="timeline-wrapper">
         
         <div class="timeline-horizontal">
@@ -215,21 +228,33 @@ animate();
                 </a>
             </div>
 
-            <div class="timeline-event">
-                <span class="timeline-year">2025</span>
-                <a href="https://www.roblox.com/games/76558904092080/The-Forge-STRESS-TEST#!/about" target="_blank" class="timeline-card-link">
-                <div class="timeline-card">
-                    <img src="images/The_Forge.png" alt="The Forge">
-                    <h3>The Forge [BETA]</h3>
-                    <p>A survival island game where you mine, forge powerful gear, and fight zombies to stay alive.</p>
-                    <span class="info">Visits: 1M+</span>
+                <div class="timeline-event">
+                    <span class="timeline-year">2025</span>
+
+                    <a href="https://www.roblox.com/games/76558904092080/The-Forge-STRESS-TEST#!/about" 
+                    target="_blank" 
+                    class="timeline-card-link">
+
+                    <div class="timeline-card fire-animated">
+
+                        <!-- 🔥 fire effect canvas added here -->
+                        <div class="forge-effect">
+                            <canvas class="forge-canvas"></canvas>
+                        </div>
+
+                        <img src="images/The_Forge.png" alt="The Forge">
+                        <span class="tiny-fire"></span>
+                        <h3 class="fire-font" style="--fire-color: #fac125;">The Forge [BETA]</h3>
+                        <p>A survival island game where you mine, forge powerful gear, and fight enemies to stay alive.</p>
+                        <span class="info">Visits: 10M+</span>
+
+                    </div>
+                    </a>
                 </div>
-                </a>
-            </div>
 
             <div class="timeline-event">
                 <span class="timeline-year">2025</span>
-                <a href="https://www.roblox.com/games/76558904092080/The-Forge-STRESS-TEST#!/about" target="_blank" class="timeline-card-link">
+                <a href="https://www.roblox.com/games/127794225497302/Abyss-TEST" target="_blank" class="timeline-card-link">
                 <div class="timeline-card">
                     <img src="images/Abyss.png" alt="Abyss">
                     <h3>Abyss [TEST]</h3>

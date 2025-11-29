@@ -213,6 +213,73 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCounter();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.querySelector(".forge-canvas");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    const ashes = [];
+
+    function spawn() {
+        if (ashes.length < 60) {
+            ashes.push({
+                x: Math.random() * canvas.width,
+                y: canvas.height + 20,
+                w: 1 + Math.random() * 2,   
+                h: 4 + Math.random() * 6,   
+                opacity: 0.3 + Math.random() * 0.5,
+                speedY: -1 - Math.random() * 1.5, 
+                speedX: (Math.random() - 0.5) * 0.4,
+                life: 120 + Math.random() * 100   
+            });
+        }
+    }
+
+    function draw(a) {
+        ctx.save();
+        ctx.globalAlpha = a.opacity;
+        ctx.fillStyle = "rgba(255,140,40,1)";
+
+        // Small glowing rectangle ash
+        ctx.fillRect(a.x, a.y, a.w, a.h);
+
+        ctx.restore();
+    }
+
+    function run() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        spawn();
+
+        for (let i = ashes.length - 1; i >= 0; i--) {
+            const a = ashes[i];
+
+            a.x += a.speedX;
+            a.y += a.speedY;
+            a.life--;
+            a.opacity -= 0.0025;
+
+            draw(a);
+
+            if (a.life <= 0 || a.opacity <= 0 || a.y < -canvas.height * 0.6) {
+                ashes.splice(i, 1);
+            }
+        }
+
+        requestAnimationFrame(run);
+    }
+
+    run();
+});
+
 
 updateHandle();
 updateTimeline();
